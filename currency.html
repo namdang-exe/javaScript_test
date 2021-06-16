@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Currency Exchange</title>
+    <script>
+
+      document.addEventListener("DOMContentLoaded", () => {
+          document.querySelector("button").onclick = () => {
+            fetch('https://api.exchangerate.host/latest?base=USD')
+            .then(response => response.json())
+            .then(data => {
+                const rate = data.rates.VND;
+                document.querySelector('h2').innerHTML = rate.toFixed(2);
+                // console.log(this.innerHTML);
+                // const rates = data.rates;
+                // for (r in rates) {
+                //     const li = document.createElement('li');
+                //     console.log("test 1")
+                //     console.log(r);
+                //     console.log("test 2");
+                //     li.innerHTML = data.rates.r;
+                //     document.querySelector('ul').appendChild(li);
+                // }
+            });
+          };
+      });
+    </script>
+  </head>
+  <body>
+    <h1>One dollar is equal to:</h1>
+    <h2>0</h2>
+    <ul></ul>
+    <button>VND</button>
+    <button>CNY</button>
+    <button>EUR</button>
+  </body>
+</html>
